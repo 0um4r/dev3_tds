@@ -10,3 +10,11 @@
  * @return vrai si le nombre est premier sinon false
  */
 bool isPrime(unsigned int number);
+
+/**
+ * @brief printPrimeFactor affiche la décomposition d'un nombre en un produit de facteurs premiers. En outre l'affichage peut afficher
+ * une décomposition en notant les puissances ou pas
+ * @param number un entier non signé
+ * @param showPower un booléan indiquant si les puissances doivent être afficher ou pas
+ */
+void printPrimeFactor(unsigned int number, bool showPower);

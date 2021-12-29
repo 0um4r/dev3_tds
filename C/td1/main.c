@@ -16,4 +16,8 @@ int main()
         isPrime(i) ? printf("%d", i) : printf(" . ");
         newLine++;
     }
+
+    printf("\n");
+
+    printPrimeFactor(126, true);
 }
