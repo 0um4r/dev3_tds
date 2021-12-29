@@ -1,7 +1,7 @@
 #include <stdio.h>
+#include "mathesi.h"
 
 int main()
 {
-    printf("Hello World!\n");
-    return 0;
+    printf(isPrime(8) ? "true" : "false");
 }
