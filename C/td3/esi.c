@@ -1,5 +1,4 @@
 #include "esi.h"
-#include <stdio.h>
 
 size_t xstrlen(const char * chaine) {
     int cpt = 0;
