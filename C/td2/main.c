@@ -1,8 +1,11 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include "esi.h"
 
 int main()
 {
-    int data[] = {1,2,3,4,5};
+    int data[] = {100,876,99999,27388,5};
+    //arrayIntPrint(data, 4);
+    arrayIntSort(data, 4, false);
     arrayIntPrint(data, 4);
 }
