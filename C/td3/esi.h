@@ -10,3 +10,11 @@
  * @return le nombre de caractères d'une chaîne de caractère
  */
 size_t xstrlen(const char * chaine);
+
+/**
+ * @brief xstrcmp compare 2 chaînes de caractères lexicographiquement
+ * @param lhs pointeur constant de char
+ * @param rhs pointeur constant de char
+ * @return une valeur négative si lhs apparaît avant rhs, zéro si égaux sinon positive
+ */
+int xstrcmp(const char * lhs, const char * rhs);
