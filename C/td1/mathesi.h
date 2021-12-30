@@ -18,3 +18,10 @@ bool isPrime(unsigned int number);
  * @param showPower un booléan indiquant si les puissances doivent être afficher ou pas
  */
 void printPrimeFactor(unsigned int number, bool showPower);
+
+/**
+ * @brief gcd calcule le plus grand commun diviseur.
+ * @param a un entier non signé
+ * @param b un entier non signé
+ */
+unsigned gcd(unsigned a, unsigned b);

@@ -73,3 +73,13 @@ void printPrimeFactor(unsigned int number, bool showPower) {
         }
     }
 }
+
+unsigned gcd(unsigned a, unsigned b) {
+    if(b != 0) {
+        gcd(b, a % b);
+    } else if(a < b) {
+        gcd(b, a);
+    } else {
+        return a;
+    }
+}
