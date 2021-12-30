@@ -9,6 +9,7 @@ int main()
     //arrayIntPrint(data, 4);
     //arrayIntSort(data, 4, false);
     //arrayIntPrint(data, 4);
+    /**
     qsort(data, (sizeof(data) / sizeof(int)), sizeof (int), compAscending);
     arrayIntPrint(data, 4);
     printf("\n");
@@ -16,6 +17,19 @@ int main()
     arrayIntPrint(data, 4);
     printf("\n");
     qsort(data, (sizeof(data) / sizeof(int)), sizeof (int), compModulo);
+    arrayIntPrint(data, 4);
+    printf("\n");
+    */
+
+    arrayIntSortGeneric(data, 4, compAscending);
+    arrayIntPrint(data, 4);
+    printf("\n");
+
+    arrayIntSortGeneric(data, 4, compDescending);
+    arrayIntPrint(data, 4);
+    printf("\n");
+
+    arrayIntSortGeneric(data, 4, compModulo);
     arrayIntPrint(data, 4);
     printf("\n");
 }

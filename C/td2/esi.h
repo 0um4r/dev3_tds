@@ -41,3 +41,10 @@ int compDescending(const void *first, const void *second);
  * @return un nombre positif si la premiere valeur modulo 3 est supérieur à la deuxième valeur modulo 3, un nombre négatif le cas contraire
  */
 int compModulo(const void * first, const void *second);
+
+/**
+ * @brief arrayIntSortGeneric trie un tableau en utilisant la fonction comp.
+ * @param data un tableau d'entiers
+ * @param nbElem un entier non signé
+ */
+void arrayIntSortGeneric(int data [], unsigned nbElem, int (*comp)(const void *, const void *));
