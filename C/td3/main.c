@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include "esi.h"
 
 int main()
 {
-    printf("Hello World!\n");
-    return 0;
+    char * chaine = "Hello";
+    printf("%d", xstrlen(chaine));
 }
