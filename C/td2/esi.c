@@ -27,3 +27,24 @@ void arrayIntSort(int data[], unsigned nbElem, bool ascending) {
         }
     }
 }
+
+int compAscending(const void *first, const void *second) {
+    int arg1 = *(const int *) first;
+    int arg2 = *(const int *) second;
+    int result = arg1 > arg2 ? 1 : -1;
+    return result;
+}
+
+int compDescending(const void *first, const void *second) {
+    int arg1 = *(const int *) first;
+    int arg2 = *(const int *) second;
+    int result = arg1 > arg2 ? -1 : 1;
+    return result;
+}
+
+int compModulo(const void * first, const void *second) {
+    int arg1 = *(const int *) first;
+    int arg2 = *(const int *) second;
+    int result = arg1 % 3 > arg2 % 3 ? 1 : -1;
+    return result;
+}
