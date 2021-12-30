@@ -21,7 +21,7 @@ int xstrcmp(const char * lhs, const char * rhs);
 
 /**
  * @brief xstrcpy copie les chaînes de caractères de 'src' vers 'dest'
- * @param dest pointeur de char consant
+ * @param dest pointeur de char constant
  * @param src pointeur de char constant
  * @return la destination dans laqeul toutes les caractères de source sont copier
  */
