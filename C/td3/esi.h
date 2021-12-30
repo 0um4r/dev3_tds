@@ -18,3 +18,20 @@ size_t xstrlen(const char * chaine);
  * @return une valeur négative si lhs apparaît avant rhs, zéro si égaux sinon positive
  */
 int xstrcmp(const char * lhs, const char * rhs);
+
+/**
+ * @brief xstrcpy copie les chaînes de caractères de 'src' vers 'dest'
+ * @param dest pointeur de char consant
+ * @param src pointeur de char constant
+ * @return la destination dans laqeul toutes les caractères de source sont copier
+ */
+char * xstrcpy(char * dest, const char * src);
+
+/**
+ * @brief xstrncpy copie 'count' chaînes de caractères de 'src' vers 'dest'
+ * @param dest pointeur de char constant
+ * @param src pointeur de char constant
+ * @param count entier on signé
+ * @return
+ */
+char * xstrncpy(char * dest, const char * src, size_t count);

@@ -1,4 +1,5 @@
 #include "esi.h"
+#include <stdio.h>
 
 size_t xstrlen(const char * chaine) {
     int cpt = 0;
@@ -19,4 +20,22 @@ int xstrcmp(const char * lhs, const char * rhs) {
         cpt++;
     }
     return 0;
+}
+
+char * xstrcpy(char * dest, const char * src) {
+    int cpt = 0;
+    while(cpt <= (int) xstrlen(src)) {
+        dest[cpt] = src[cpt];
+        cpt++;
+    }
+    return dest;
+}
+
+char * xstrncpy(char * dest, const char * src, size_t count) {
+    size_t cpt = 0;
+    while(cpt < count && cpt <= xstrlen(src)) {
+        dest[cpt] = src[cpt];
+        cpt++;
+    }
+    return dest;
 }

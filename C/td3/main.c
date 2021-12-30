@@ -17,4 +17,12 @@ int main()
     else if(rc > 0)
         printf("[%s] follows [%s]\n", lhs, rhs);
 
+    char * src = "Copy this!";
+    char dst[xstrlen(src) + 1];
+    xstrcpy(dst, src);
+    printf("%s\n", dst);
+
+    char dst2[xstrlen(src) + 1];
+    xstrncpy(dst2, src, 2);
+    printf("%s", dst2);
 }
