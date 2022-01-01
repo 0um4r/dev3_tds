@@ -47,3 +47,23 @@ char * xstrcat(char * dest, const char * src) {
     }
     return dest;
 }
+
+char * xstrncat(char * dest, const char * src, size_t count) {
+    int index = 0;
+    while(src[index] != 0 && index <= count) {
+        dest[xstrlen(dest)] = src[index];
+        index++;
+    }
+    return dest;
+}
+
+char * xstrtok(char * str, const char * delim) {
+    int index = 0;
+    while(str[index] != 0) {
+        if(str[index] == * delim && index != 0) {
+            str[index] = 0;
+        }
+        index++;
+    }
+    return str;
+}

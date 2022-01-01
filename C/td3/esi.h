@@ -43,3 +43,20 @@ char * xstrncpy(char * dest, const char * src, size_t count);
  * @return la destination dans laquel toutes les chaînes de caractères de 'src' ont été copier à la fin de 'dest'
  */
 char * xstrcat(char * dest, const char * src);
+
+/**
+ * @brief xstrncat copie 'count' chaînes de caractères de 'src' à la fin de 'dest'.
+ * @param dest pointeur de char
+ * @param src pointeur de char constant
+ * @param count entier non signé
+ * @return la destination dans laquel 'count' chaînes de caractères ont été copié depuis 'src'
+ */
+char * xstrncat(char * dest, const char * src, size_t count);
+
+/**
+ * @brief xstrtok parcours la chaîne de caractère et s'arrête au premier délimiteur.
+ * @param str pointeur de char
+ * @param delim pointeur de char constant
+ * @return la chaîne de caractère du début jusqu'au délimiteur
+ */
+char * xstrtok(char * str, const char * delim);

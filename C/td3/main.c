@@ -28,5 +28,15 @@ int main()
 
     char dst3[30] = "Copie right there ->";
     xstrcat(dst3, src);
-    printf("%s\n", dst3);
+    printf("test xstrcat : %s\n", dst3);
+
+    char dst4[30] = "Copie right there ->";
+    xstrncat(dst4, src, 3);
+    printf("test xstrncat :  %s\n", dst4);
+
+    char dst5[] = "Hello World!";
+    char delim[] = "!";
+    printf("%s\n", dst5);
+    xstrtok(dst5, delim);
+    printf("%s", dst5);
 }
