@@ -35,7 +35,7 @@ int main()
     printf("test xstrncat :  %s\n", dst4);
 
     char dst5[] = "Hello World!";
-    char delim[] = "!";
+    char delim[] = " ";
     printf("%s\n", dst5);
     xstrtok(dst5, delim);
     printf("%s", dst5);
