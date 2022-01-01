@@ -49,7 +49,7 @@ char * xstrcat(char * dest, const char * src) {
 }
 
 char * xstrncat(char * dest, const char * src, size_t count) {
-    int index = 0;
+    size_t index = 0;
     while(src[index] != 0 && index <= count) {
         dest[xstrlen(dest)] = src[index];
         index++;
