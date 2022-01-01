@@ -38,3 +38,12 @@ char * xstrncpy(char * dest, const char * src, size_t count) {
     }
     return dest;
 }
+
+char * xstrcat(char * dest, const char * src) {
+    int index = 0;
+    while(src[index] != 0) {
+        dest[xstrlen(dest)] = src[index];
+        index++;
+    }
+    return dest;
+}

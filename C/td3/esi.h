@@ -35,3 +35,11 @@ char * xstrcpy(char * dest, const char * src);
  * @return
  */
 char * xstrncpy(char * dest, const char * src, size_t count);
+
+/**
+ * @brief xstrcat copie les chaînes de caractères de 'src' à la fin de 'dest'.
+ * @param dest pointeur de char
+ * @param src pointeur de char constant
+ * @return la destination dans laquel toutes les chaînes de caractères de 'src' ont été copier à la fin de 'dest'
+ */
+char * xstrcat(char * dest, const char * src);

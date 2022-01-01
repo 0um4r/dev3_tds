@@ -24,5 +24,9 @@ int main()
 
     char dst2[xstrlen(src) + 1];
     xstrncpy(dst2, src, 2);
-    printf("%s", dst2);
+    printf("%s\n", dst2);
+
+    char dst3[30] = "Copie right there ->";
+    xstrcat(dst3, src);
+    printf("%s\n", dst3);
 }
