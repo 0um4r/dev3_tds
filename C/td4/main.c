@@ -5,10 +5,20 @@
 int main()
 {
     unsigned number = 0;
-    unsigned * factors = primeFactorsA(&number, 84);
+    unsigned * factorss = primeFactorsA(&number, 88594);
     for(unsigned i = 0; i < number; i++) {
-        printf("%d ", factors[i]);
+        printf("%d ", factorss[i]);
     }
-    printf("\n%d", number);
-    free(factors);
+    printf("\n%d\n", number);
+
+    unsigned * factor = NULL;
+    unsigned * multiplicity = NULL;
+
+    primeFactorsB(&factor, &multiplicity, 84);
+    print(3, &factor);
+    print(3, &multiplicity);
+
+    free(factorss);
+    free(factor);
+    free(multiplicity);
 }

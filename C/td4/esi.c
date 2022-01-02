@@ -1,5 +1,6 @@
 #include "esi.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 unsigned * primeFactorsA(unsigned * count, unsigned number) {
     unsigned factors = countFactors(number);
@@ -14,7 +15,7 @@ unsigned * primeFactorsA(unsigned * count, unsigned number) {
                 allocate[index] = divisor;
                 index++;
 
-                while(number % divisor == 0) {
+                while(number % divisor == 0 && number > 0) {
                     number = number / divisor;
                     allocate[index] = divisor;
                     index++;
@@ -24,6 +25,13 @@ unsigned * primeFactorsA(unsigned * count, unsigned number) {
         divisor++;
     }
     return allocate;
+}
+
+unsigned primeFactorsB(unsigned * * factor, unsigned * * multiplicity, unsigned number) {
+    unsigned total = 0;
+    * factor = factors(number, &total);
+    * multiplicity = multiplicities(number, &total);
+    return total;
 }
 
 _Bool isPrime(unsigned number) {
@@ -51,7 +59,7 @@ unsigned countFactors(unsigned number) {
                 count++;
             }
 
-            while(number % divisor == 0 && number != 0) {
+            while(number % divisor == 0) {
                 number = number / divisor;
                 count++;
             }
@@ -59,4 +67,60 @@ unsigned countFactors(unsigned number) {
         divisor++;
     }
     return count;
+}
+
+unsigned * factors(unsigned number, unsigned * count) {
+    unsigned * allocate = (unsigned *) malloc(sizeof(unsigned));
+    unsigned divisor = 0;
+    unsigned index = 0;
+    while(number > 1) {
+        if(isPrime(divisor)) {
+            if(number % divisor == 0 && number != 0) {
+                number = number / divisor;
+                allocate = (unsigned *) realloc(allocate, sizeof(unsigned));
+                allocate[index] = divisor;
+                * count = * count + 1;
+                index++;
+                while(number % divisor == 0 && number > 0) {
+                    number = number / divisor;
+                }
+            }
+        }
+        divisor++;
+    }
+    return allocate;
+}
+
+unsigned * multiplicities(unsigned number, unsigned * count) {
+    unsigned * allocate = (unsigned *) malloc(sizeof(unsigned));
+    unsigned divisor = 0;
+    unsigned index = 0;
+    unsigned multiple = 1;
+    while(number > 1) {
+        if(isPrime(divisor)) {
+            if(number % divisor == 0) {
+                number = number / divisor;
+                while(number % divisor == 0 && number > 0) {
+                    number = number / divisor;
+                    multiple++;
+                }
+            }
+            allocate = (unsigned *) realloc(allocate, sizeof(unsigned));
+            allocate[index] = multiple;
+            * count = * count + 1;
+            index++;
+            if(multiple != 1) {
+                multiple = 1;
+            }
+        }
+        divisor++;
+    }
+    return allocate;
+}
+
+void print(unsigned size, unsigned * * allocated) {
+    for(unsigned i = 0; i < size; i++) {
+        printf("%d ", (*allocated)[i]);
+    }
+    printf("\n");
 }
