@@ -5,7 +5,7 @@
 int main()
 {
     unsigned number = 0;
-    unsigned * factorss = primeFactorsA(&number, 88594);
+    unsigned * factorss = primeFactorsA(&number, 2339);
     for(unsigned i = 0; i < number; i++) {
         printf("%d ", factorss[i]);
     }
@@ -16,7 +16,7 @@ int main()
 
     primeFactorsB(&factor, &multiplicity, 84);
     print(3, &factor);
-    print(3, &multiplicity);
+    print(2, &multiplicity);
 
     free(factorss);
     free(factor);

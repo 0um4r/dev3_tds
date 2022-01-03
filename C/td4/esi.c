@@ -73,14 +73,20 @@ unsigned * factors(unsigned number, unsigned * count) {
     unsigned * allocate = (unsigned *) malloc(sizeof(unsigned));
     unsigned divisor = 0;
     unsigned index = 0;
+    unsigned times = 1;
     while(number > 1) {
         if(isPrime(divisor)) {
-            if(number % divisor == 0 && number != 0) {
+            if(number % divisor == 0) {
                 number = number / divisor;
-                allocate = (unsigned *) realloc(allocate, sizeof(unsigned));
-                allocate[index] = divisor;
+                if(times >= 2) {
+                    allocate = (unsigned *) realloc(allocate, sizeof(unsigned) * times);
+                    allocate[index] = divisor;
+                } else {
+                    allocate[index] = divisor;
+                }
                 * count = * count + 1;
                 index++;
+                times++;
                 while(number % divisor == 0 && number > 0) {
                     number = number / divisor;
                 }
@@ -96,14 +102,22 @@ unsigned * multiplicities(unsigned number, unsigned * count) {
     unsigned divisor = 0;
     unsigned index = 0;
     unsigned multiple = 1;
+    unsigned times = 1;
     while(number > 1) {
         if(isPrime(divisor)) {
             if(number % divisor == 0) {
                 number = number / divisor;
+                if(times >= 2) {
+                    allocate = (unsigned *) realloc(allocate, sizeof(unsigned) * times);
+                    allocate[index] = divisor;
+                } else {
+                    allocate[index] = divisor;
+                }
                 while(number % divisor == 0 && number > 0) {
                     number = number / divisor;
                     multiple++;
                 }
+                times++;
             }
             allocate = (unsigned *) realloc(allocate, sizeof(unsigned));
             allocate[index] = multiple;
