@@ -8,4 +8,5 @@ SOURCES += \
         util.c
 
 HEADERS += \
+    imo.h \
     util.h
