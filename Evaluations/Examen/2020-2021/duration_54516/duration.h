@@ -43,7 +43,7 @@ namespace g54516
  */
 class Duration
 {
-  public:
+public:
 
     /*!
      * \brief Nombre de secondes dans une minute.
@@ -65,7 +65,7 @@ class Duration
      */
     constexpr static unsigned SECONDS_IN_DAY { SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY };
 
-  private:
+private:
 
     /*!
      * \brief Signe de la Duration.
@@ -90,7 +90,7 @@ class Duration
      */
     const unsigned seconds_;
 
-  public:
+public:
 
     /*!
      * \brief Fabrique d'une durée à partir d'un signe et d'un nombre
@@ -119,7 +119,7 @@ class Duration
      *         égale en valeur absolue à `seconds`.
      */
     constexpr static Duration durationFromSeconds(Sign sign = Sign::PLUS,
-            unsigned long seconds = 0);
+                                                  unsigned long seconds = 0);
 
     /*!
      * \brief Constructeur de Duration à partir d'un signe, d'un
@@ -477,136 +477,214 @@ constexpr Duration operator+(const Duration & lhs,
 
 constexpr Duration::Duration(Sign sign, unsigned days,
                              unsigned seconds) :
-    // TODO : compléter / modifier
-    sign_ { },
-    days_ { },
-    seconds_ { }
+    sign_ {sign},
+    days_ {days += seconds / 86400},
+    seconds_ {seconds}
 { }
 
 constexpr Duration::Duration(unsigned long seconds) :
-    // TODO : compléter / modifier
-    sign_ { },
-    days_ { },
-    seconds_ { }
+    sign_ {Sign::PLUS},
+    days_ {seconds / 86400},
+    seconds_ {seconds}
 { }
 
 constexpr Duration Duration::durationFromSeconds(Sign sign,
-        unsigned long seconds)
+                                                 unsigned long seconds)
 {
-    // TODO : compléter / modifier
-    return { };
+    Duration other;
+    if(seconds / 86400 >= 1) {
+        unsigned days = seconds / 86400;
+        seconds = seconds - 86400;
+        Duration other {sign, days, seconds};
+    } else {
+        Duration other {sign, seconds};
+    }
+    return other;
 }
 
 constexpr Sign Duration::sign() const
 {
-    // TODO : compléter / modifier
-    return { };
+    return sign_;
 }
 
 constexpr unsigned Duration::seconds() const
 {
-    // TODO : compléter / modifier
-    return { };
+    return seconds_;
 }
 
 constexpr unsigned Duration::days() const
 {
-    // TODO : compléter / modifier
-    return { };
+    return days_;
 }
 
 constexpr long Duration::to_seconds() const
 {
-    // TODO : compléter / modifier
-    return { };
+    int to_seconds = 0;
+    if(sign_ == Sign::MINUS) {
+        if(days_ >= 1) {
+            to_seconds = 0 - (days_ * 86400) + seconds_;
+        } else {
+            to_seconds = 0 - seconds_;
+        }
+    } else {
+        if(days_ >= 1) {
+            to_seconds = (days_ * 86400) + seconds_;
+        } else {
+            to_seconds = seconds_;
+        }
+    }
+    return to_seconds;
 }
 
 constexpr double Duration::to_days() const
 {
-    // TODO : compléter / modifier
-    return { };
+    double to_days = 0;
+    if(sign_ == Sign::MINUS) {
+        if(days_ >= 1) {
+            to_days = 0 - (days_ + (seconds_ / 86400));
+        } else {
+            to_days = 0 - (seconds_ / 86400);
+        }
+    } else {
+        if(days_ >= 1) {
+            to_days = days_ + (seconds_ / 86400);
+        } else {
+            to_days = seconds_ / 86400;
+        }
+    }
+    return to_days;
 }
 
 std::string Duration::to_string() const
 {
-    // TODO : compléter / modifier
-    return { };
+    return "Le signe est " + std::string(sign_ == Sign::MINUS ? "négatif" : "positif")
+            + "\nLes jours sont " + std::string(std::to_string(days_) + "\nLes secondes sont " + std::string(std::to_string(seconds_))) ;;
 }
 
 constexpr std::tuple<Sign, unsigned, unsigned, unsigned, unsigned>
 Duration::sdhms() const
 {
-    // TODO : compléter / modifier
-    return { };
+    Sign sign = sign_;
+    unsigned days = days_;
+    unsigned hours = 0;
+    unsigned minutes = 0;
+    unsigned seconds = seconds_;
+    unsigned tmp = 0;
+
+    if(seconds / 86400 >= 1) {
+        tmp = seconds / 86400;
+        days = days + (seconds / 86400);
+        seconds = seconds - (tmp * 86400);
+    }
+
+    if(seconds / 3600 >= 1) {
+        tmp = seconds / 86400;
+        hours = hours + (seconds / 3600);
+        seconds = seconds - (tmp * 3600);
+    }
+
+    if(seconds / 60 >= 1) {
+        tmp = seconds / 60;
+        minutes = minutes + (seconds / 60);
+        seconds = seconds - (tmp * 60);
+    }
+
+    return std::make_tuple(sign, days, hours, minutes, seconds);
 }
 
 // implémentation fonctions
 
 constexpr long to_seconds(const Duration & duration)
 {
-    // TODO : compléter / modifier
-    return { };
+    return duration.to_seconds();
 }
 
 constexpr double to_days(const Duration & duration)
 {
-    // TODO : compléter / modifier
-    return { };
+    return duration.to_days();
 }
 
 std::string to_string(const Duration & duration)
 {
-    // TODO : compléter / modifier
-    return { };
+    return duration.to_string();
 }
 
 std::ostream & operator<<(std::ostream & out,
                           const Duration & duration)
 {
-    // TODO : compléter / modifier
+    out << duration.to_string();
     return out;
 }
 
 constexpr bool operator==(const Duration & lhs, const Duration & rhs)
 {
-    // TODO : compléter / modifier
-    return { };
+    bool is_equal = false;
+    if(lhs.days() == rhs.days() && lhs.seconds() == rhs.seconds()) {
+        is_equal = true;
+    }
+    return is_equal;
 }
 
 constexpr bool operator!=(const Duration & lhs, const Duration & rhs)
 {
-    // TODO : compléter / modifier
-    return { };
+    bool is_different = false;
+    if(lhs.days() != rhs.days() && lhs.seconds() != rhs.seconds()) {
+        is_different = true;
+    }
+    return is_different;
 }
 
 constexpr bool operator<(const Duration & lhs, const Duration & rhs)
 {
-    // TODO : compléter / modifier
-    return { };
+    bool is_lower = false;
+    if(lhs.sign() == Sign::MINUS && rhs.sign() == Sign::PLUS) {
+        is_lower = true;
+    }
+    return is_lower;
 }
 
 constexpr bool operator<=(const Duration & lhs, const Duration & rhs)
 {
-    // TODO : compléter / modifier
-    return { };
+    bool is_lowerOrEqual = false;
+    if((lhs.sign() == Sign::MINUS && rhs.sign() == Sign::PLUS) || (lhs.sign() == Sign::MINUS && rhs.sign() == Sign::MINUS)) {
+        is_lowerOrEqual = true;
+    }
+    return is_lowerOrEqual;
 }
 
 constexpr bool operator>(const Duration & lhs, const Duration & rhs)
 {
-    // TODO : compléter / modifier
-    return { };
+    bool is_higher = false;
+    if(lhs.sign() == Sign::PLUS && rhs.sign() == Sign::MINUS) {
+        is_higher = true;
+    }
+    return is_higher;
 }
 
 constexpr bool operator>=(const Duration & lhs, const Duration & rhs)
 {
-    // TODO : compléter / modifier
-    return { };
+    bool is_higherOrEqual = false;
+    if((lhs.sign() == Sign::PLUS && rhs.sign() == Sign::MINUS) || (lhs.sign() == Sign::PLUS && rhs.sign() == Sign::PLUS)) {
+        is_higherOrEqual = true;
+    }
+    return is_higherOrEqual;
 }
 
 constexpr Duration operator-(const Duration & duration)
 {
-    // TODO : compléter / modifier
-    return { };
+    Duration newDuration;
+    Sign sign = duration.sign();
+    if(sign == Sign::MINUS) {
+        Duration newDuration {Sign::PLUS, duration.days(), duration.seconds()};
+        newDuration.to_days();
+        newDuration.to_seconds();
+    } else {
+        Duration newDuration {Sign::MINUS, duration.days(), duration.seconds()};
+        newDuration.to_days();
+        newDuration.to_seconds();
+    }
+
+    return newDuration;
 }
 
 constexpr Duration operator+(const Duration & lhs,
