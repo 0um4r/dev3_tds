@@ -11,6 +11,6 @@ SOURCES += \
 
 HEADERS += \
     data.h \
-    duration_incomplete.h \
+    duration.h \
     random/random.hpp \
     sign.h

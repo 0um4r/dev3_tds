@@ -56,7 +56,7 @@ OBJECTS       = debug/data.o \
 		debug/main.o
 
 DIST          =  data.h \
-		duration_incomplete.h \
+		duration.h \
 		random/random.hpp \
 		sign.h ..\duration_54516\data.cpp \
 		..\duration_54516\main.cpp

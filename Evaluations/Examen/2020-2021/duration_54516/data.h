@@ -15,7 +15,7 @@
  * \brief Espace de nom de Nicolas Vansteenkiste.
  *
  */
-namespace nvs
+namespace g54516
 {
 
 /*!

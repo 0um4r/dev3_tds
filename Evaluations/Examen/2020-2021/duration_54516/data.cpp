@@ -8,7 +8,7 @@
 
 using namespace std;
 
-namespace nvs
+namespace g54516
 {
 
 std::vector<std::tuple<Sign, unsigned, unsigned>>
@@ -16,7 +16,7 @@ std::vector<std::tuple<Sign, unsigned, unsigned>>
 {
     if (reproductible == Reproductible::FALSE)
     {
-        nvs::randomize();
+        g54516::randomize();
     }
 
     vector<tuple<Sign, unsigned, unsigned>> result { size };
@@ -36,7 +36,7 @@ std::vector<std::tuple<Sign, long unsigned>>
 {
     if (reproductible == Reproductible::FALSE)
     {
-        nvs::randomize();
+        g54516::randomize();
     }
 
     vector<tuple<Sign, long unsigned>> result { size };
